@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -190,14 +191,183 @@ namespace sudoku
 
         /**
          * 判断数独是否正确
+         * 判断行列单元格内数字是否重复
          */
         private bool IsCorrect()
         {
+            // 判断行
+            for (int i = 0; i < 0; i++)
+            {
+                HashSet<int> rowCheck = new HashSet<int>();
+                string[] row = GetRow(i);
+                for (int j = 0; j < 9; j++)
+                {
+                    if (row[j].Trim() != "")
+                    {
+                        rowCheck.Add(int.Parse(row[j]));
+                    }
+                }
+                if (rowCheck.Count != 9)
+                {
+                    return false;
+                }
+            }
+
+            // 判断列
+            for (int i = 0; i < 0; i++)
+            {
+                HashSet<int> colCheck = new HashSet<int>();
+                string[] col = GetCol(i);
+                for (int j = 0; j < 9; j++)
+                {
+                    if (col[j].Trim() != "")
+                    {
+                        colCheck.Add(int.Parse(col[j]));
+                    }
+                }
+                if (colCheck.Count != 9)
+                {
+                    return false;
+                }
+            }
+
+            // 判断单元格
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    HashSet<int> boxCheck = new HashSet<int>();
+                    string[] box = GetBox(i, j);
+                }
+            }
             return true;
+
         }
+
+        private string[] GetBox(int x, int y)
+        {
+            int dx = (int)(x / 3);
+            int dy = (int)(y / 3);
+
+            string[] arr = new string[9];
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    arr[i * 3 + j] = sudoku[i + dx * 3, j + dy * 3];
+                }
+            }
+            return arr;
+        }
+
+        /**
+         * 获取该行所有元素
+         */
+        private string[] GetRow(int x)
+        {
+            string[] row = new string[9];
+            for (int i = 0; i < 9; i++)
+            {
+                row[i] = sudoku[x, i];
+            }
+            return row;
+        }
+
+        /**
+         * 获取该列所有元素
+         */
+        private string[] GetCol(int x)
+        {
+            string[] col = new string[9];
+            for (int i = 0; i < 9; i++)
+            {
+                col[i] = sudoku[i, x];
+            }
+            return col;
+        }
+
 
         private void Generate_Click(object sender, RoutedEventArgs e)
         {
+            Status.Text = "正在生成~~";
+            Array.Copy(sudoku, history, sudoku.Length);
+
+            const int blank = 40;
+
+            do
+            {
+                InitSudoku();
+
+                for (int i = 0; i < 3; i++)
+                {
+                    string[] temp = GetRandomArray();
+                    int p = 0;
+                    for (int j = 0 + (i * 3); j < 3 + (i * 3); j++)
+                    {
+                        for (int k = 0 + (i * 3); k < 3 + (i * 3); k++)
+                        {
+                            sudoku[j, k] = temp[p];
+                            p++;
+                        }
+                    }
+                }
+                SolveSudoku();
+            } while (sudoku[8, 5] == " ");
+            DigHole(blank);
+            UpdateTable();
+            Status.Text = "已生成数独";
+            Solve.Content = "求解与验证";
+
+        }
+
+        private void DigHole(int blank)
+        {
+            int num = blank;
+            while (num > 0)
+            {
+                Random rx = new Random();
+                Random ry = new Random();
+                int x = rx.Next(0, 9);
+                int y = ry.Next(0, 9);
+                if (sudoku[x, y] != " ")
+                {
+                    string[,] copy = new string[9, 9];
+                    Array.Copy(sudoku, copy, sudoku.Length);
+                    sudoku[x, y] = " ";
+                    SolveSudoku();
+                    if (IsFull())
+                    {
+                        copy[x, y] = " ";
+                        num--;
+                    }
+                    Array.Copy(copy, sudoku, sudoku.Length);
+                }
+            }
+        }
+
+        private void SolveSudoku()
+        {
+            throw new NotImplementedException();
+        }
+
+        /**
+         * 生成随机数组
+         */
+        private string[] GetRandomArray()
+        {
+            Random r = new Random();
+            string[] arr = new string[9] { " ", " ", " ", " ", " ", " ", " ", " ", " ", };
+            int count = 1;
+            while (count <= 9)
+            {
+                int num = r.Next(0, 9);
+                if (arr[num] == " ")
+                {
+                    arr[num] = count.ToString();
+                    count++;
+                }
+            }
+            return arr;
         }
 
         private void Revoke_Click(object sender, RoutedEventArgs e)
