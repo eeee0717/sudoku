@@ -189,6 +189,7 @@
         <!--功能区-->
         <Grid x:Name="ToolBar" HorizontalAlignment="Center" VerticalAlignment="Top" Height="72" Width="656" Margin="0,18,0,0" Grid.Column="2" Background="#FFF5F5F5">
             <TextBlock x:Name="Status" HorizontalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="22" FontWeight="Bold"><Run Language="zh-cn" Text="Sudoku" /></TextBlock>
+            <Label x:Name="Timer_1" Content="" HorizontalAlignment="Left" Margin="51,24,0,0" VerticalAlignment="Top" Width="77" />
         </Grid>
         <Label Content="1" HorizontalAlignment="Left" Margin="24,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center" />
         <Label Content="2" HorizontalAlignment="Left" Margin="64,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center" />

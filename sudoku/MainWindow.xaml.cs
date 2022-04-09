@@ -15,6 +15,7 @@ namespace sudoku
     {
         // 初始化变量
         public string[,] sudoku = new string[9, 9];
+
         public string[,] history = new string[9, 9];
         public string[,] first = new string[9, 9];
         public bool isImport = false;
@@ -27,8 +28,6 @@ namespace sudoku
             InitSudoku();
             InitSudokuButton();
             InitInputButton();
-            //Import_Sudoku();
-
             Status.Text = "准备就绪";
         }
 
@@ -307,8 +306,10 @@ namespace sudoku
         private void Generate_Click(object sender, RoutedEventArgs e)
         {
             Random r = new Random();
-            string n = r.Next(1, 5).ToString();
-            string path = "../../SudokuDb/medium/" + n + ".csv";
+            string n = r.Next(1, 6).ToString();
+            Console.WriteLine(n);
+            string path = "./SudokuDb/medium/" + n + ".csv";
+
             string data = File.ReadAllText(path);
             string[] table = data.Split(new char[] { ',', '\n' });
             int count = 0;
@@ -318,7 +319,6 @@ namespace sudoku
             {
                 for (int j = 0; j < 9; j++)
                 {
-
                     sudoku[i, j] = table[count];
                     count++;
                 }
@@ -329,7 +329,6 @@ namespace sudoku
             Status.Text = "已生成数独";
             Array.Copy(sudoku, first, sudoku.Length);
             isImport = true;
-
         }
 
         /**
@@ -428,7 +427,6 @@ namespace sudoku
             return (int[])res.ToArray(typeof(int));
         }
 
-
         private void Revoke_Click(object sender, RoutedEventArgs e)
         {
             Array.Copy(history, sudoku, sudoku.Length);
@@ -458,7 +456,6 @@ namespace sudoku
 
         private void Solve_Click(object sender, RoutedEventArgs e)
         {
-
             if (!IsFull())
             {
                 Array.Copy(sudoku, history, sudoku.Length);
@@ -473,7 +470,6 @@ namespace sudoku
                 if (!IsCorrect())
                 {
                     Status.Text = "求解失败";
-                    MessageBox.Show("这个数独可能无解", "求解结果", MessageBoxButton.OK, MessageBoxImage.Error);
                     Array.Copy(history, sudoku, sudoku.Length);
                     UpdateTable();
                 }
