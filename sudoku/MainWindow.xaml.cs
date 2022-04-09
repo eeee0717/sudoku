@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -345,9 +346,100 @@ namespace sudoku
             }
         }
 
+        /**
+         * 求解数独
+         */
         private void SolveSudoku()
         {
-            throw new NotImplementedException();
+            Find(0, 0);
+        }
+
+        private void Find(int x, int y)
+        {
+            for (int i = x; i < 9; i++)
+            {
+                int z = i == x ? y : 0;
+                for (int j = z; j < 9; j++)
+                {
+                    if (sudoku[i, j].Trim() == "")
+                    {
+                        string[] row = GetRow(i);
+                        string[] col = GetCol(j);
+                        string[] box = GetBox(i, j);
+                        int[] result = GetPossibleNumber(row, col, box);
+
+                        switch (result.Length)
+                        {
+                            case 0:
+                                {
+                                    return;
+                                }
+                            case 1:
+                                {
+                                    sudoku[i, j] = result[0].ToString();
+                                    Find(i, j);
+
+                                    if (sudoku[8, 8].Trim() == "")
+                                    {
+                                        sudoku[i, j] = " ";
+                                    }
+                                    else
+                                    {
+                                        return;
+                                    }
+                                    return;
+                                }
+                            default:
+                                {
+                                    for (int k = 0; k < result.Length; k++)
+                                    {
+                                        sudoku[i, j] = result[k].ToString();
+                                        Find(i, j);
+
+
+                                        if (sudoku[8, 8].Trim() == "")
+                                            sudoku[i, j] = " ";
+                                        else
+                                            return;
+
+                                    }
+                                    return;
+                                }
+                        }
+                    }
+                }
+                return;
+            }
+        }
+
+        /**
+         * 返回可使用的数字
+         */
+        private int[] GetPossibleNumber(string[] row, string[] col, string[] box)
+        {
+            int[] arr = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            // 判断哪些数字已经被使用过
+            for (int i = 0; i < 9; i++)
+            {
+                if (row[i].Trim() != "")
+                    arr[int.Parse(row[i]) - 1]++;
+
+                if (col[i].Trim() != "")
+                    arr[int.Parse(col[i]) - 1]++;
+
+                if (box[i].Trim() != "")
+                    arr[int.Parse(box[i]) - 1]++;
+            }
+
+            ArrayList res = new ArrayList();
+            for (int i = 0; i < 9; i++)
+            {
+                if (arr[i] == 0)
+                {
+                    res.Add(i + 1);
+                }
+            }
+            return (int[])res.ToArray(typeof(int));
         }
 
         /**
