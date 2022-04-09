@@ -190,24 +190,23 @@
         <Grid x:Name="ToolBar" HorizontalAlignment="Center" VerticalAlignment="Top" Height="72" Width="656" Margin="0,18,0,0" Grid.Column="2" Background="#FFF5F5F5">
             <TextBlock x:Name="Status" HorizontalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="22" FontWeight="Bold"><Run Language="zh-cn" Text="Sudoku" /></TextBlock>
         </Grid>
-        <Label Content="1" HorizontalAlignment="Left" Margin="24,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center"/>
-        <Label Content="2" HorizontalAlignment="Left" Margin="64,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center"/>
-        <Label Content="3" HorizontalAlignment="Left" Margin="104,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center"/>
-        <Label Content="4" HorizontalAlignment="Left" Margin="144,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center"/>
-        <Label Content="5" HorizontalAlignment="Left" Margin="184,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center"/>
-        <Label Content="6" HorizontalAlignment="Left" Margin="224,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center"/>
-        <Label Content="7" HorizontalAlignment="Left" Margin="264,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center"/>
-        <Label Content="8" HorizontalAlignment="Left" Margin="304,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center"/>
-        <Label Content="9" HorizontalAlignment="Left" Margin="344,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center"/>
-        <Label Content="1" HorizontalAlignment="Left" Margin="0,116,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.227" Height="40" Width="24" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center"/>
-        <Label Content="2" HorizontalAlignment="Left" Margin="0,156,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.227" Height="40" Width="24" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center"/>
-        <Label Content="3" HorizontalAlignment="Left" Margin="0,196,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.227" Height="40" Width="24" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center"/>
-        <Label Content="4" HorizontalAlignment="Left" Margin="0,236,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.227" Height="40" Width="24" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center"/>
-        <Label Content="5" HorizontalAlignment="Left" Margin="0,276,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.227" Height="40" Width="24" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center"/>
-        <Label Content="6" HorizontalAlignment="Left" Margin="0,316,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.227" Height="40" Width="24" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center"/>
-        <Label Content="7" HorizontalAlignment="Left" Margin="0,356,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.227" Height="40" Width="24" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center"/>
-        <Label Content="8" HorizontalAlignment="Left" Margin="0,396,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.227" Height="40" Width="24" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center"/>
-        <Label Content="9" HorizontalAlignment="Left" Margin="0,436,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.227" Height="40" Width="24" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center"/>
-
+        <Label Content="1" HorizontalAlignment="Left" Margin="24,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center" />
+        <Label Content="2" HorizontalAlignment="Left" Margin="64,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center" />
+        <Label Content="3" HorizontalAlignment="Left" Margin="104,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center" />
+        <Label Content="4" HorizontalAlignment="Left" Margin="144,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center" />
+        <Label Content="5" HorizontalAlignment="Left" Margin="184,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center" />
+        <Label Content="6" HorizontalAlignment="Left" Margin="224,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center" />
+        <Label Content="7" HorizontalAlignment="Left" Margin="264,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center" />
+        <Label Content="8" HorizontalAlignment="Left" Margin="304,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center" />
+        <Label Content="9" HorizontalAlignment="Left" Margin="344,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.235,0.6" Width="40" HorizontalContentAlignment="Center" />
+        <Label Content="1" HorizontalAlignment="Left" Margin="0,116,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.227" Height="40" Width="24" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center" />
+        <Label Content="2" HorizontalAlignment="Left" Margin="0,156,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.227" Height="40" Width="24" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center" />
+        <Label Content="3" HorizontalAlignment="Left" Margin="0,196,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.227" Height="40" Width="24" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center" />
+        <Label Content="4" HorizontalAlignment="Left" Margin="0,236,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.227" Height="40" Width="24" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center" />
+        <Label Content="5" HorizontalAlignment="Left" Margin="0,276,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.227" Height="40" Width="24" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center" />
+        <Label Content="6" HorizontalAlignment="Left" Margin="0,316,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.227" Height="40" Width="24" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center" />
+        <Label Content="7" HorizontalAlignment="Left" Margin="0,356,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.227" Height="40" Width="24" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center" />
+        <Label Content="8" HorizontalAlignment="Left" Margin="0,396,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.227" Height="40" Width="24" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center" />
+        <Label Content="9" HorizontalAlignment="Left" Margin="0,436,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.242,-0.227" Height="40" Width="24" HorizontalContentAlignment ="Center" VerticalContentAlignment="Center" />
     </Grid>
 </Window>

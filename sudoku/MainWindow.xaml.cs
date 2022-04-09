@@ -14,9 +14,11 @@ namespace sudoku
     {
         // 初始化变量
         public string[,] sudoku = new string[9, 9];
+
         public string[,] history = new string[9, 9];
         public int x = 0;
         public int y = 0;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -30,6 +32,7 @@ namespace sudoku
         /**
          * 初始化数独
          */
+
         private void InitSudoku()
         {
             int i, j;
@@ -42,9 +45,11 @@ namespace sudoku
                 }
             }
         }
+
         /**
          * 初始化数独按键
          */
+
         private void InitSudokuButton()
         {
             int i, j;
@@ -61,12 +66,12 @@ namespace sudoku
                     }
                 }
             }
-
         }
 
         /**
          * 数独按键点击事件
          */
+
         private void OnSudokuButtonClick(object sender, RoutedEventArgs e)
         {
             RemoveAllSudokuButtonStyle();
@@ -100,10 +105,10 @@ namespace sudoku
             }
         }
 
-
         /**
          * 初始化输入按键
          */
+
         private void InitInputButton()
         {
             int i;
@@ -119,6 +124,7 @@ namespace sudoku
         /**
          * 输入按键点击事件
          */
+
         private void OnInputButtonClick(object sender, RoutedEventArgs e)
         {
             // 已选中区块
@@ -150,6 +156,7 @@ namespace sudoku
         /**
          * 更新数独
          */
+
         private void UpdateTable()
         {
             for (int i = 0; i < SudokuPanel.Children.Count; i++)
@@ -172,6 +179,7 @@ namespace sudoku
         /**
          * 判断数独是否填完
          */
+
         private bool IsFull()
         {
             int count = 0;
@@ -194,6 +202,7 @@ namespace sudoku
          * 判断数独是否正确
          * 判断行列单元格内数字是否重复
          */
+
         private bool IsCorrect()
         {
             // 判断行
@@ -242,7 +251,6 @@ namespace sudoku
                 }
             }
             return true;
-
         }
 
         private string[] GetBox(int x, int y)
@@ -264,6 +272,7 @@ namespace sudoku
         /**
          * 获取该行所有元素
          */
+
         private string[] GetRow(int x)
         {
             string[] row = new string[9];
@@ -277,6 +286,7 @@ namespace sudoku
         /**
          * 获取该列所有元素
          */
+
         private string[] GetCol(int x)
         {
             string[] col = new string[9];
@@ -286,7 +296,6 @@ namespace sudoku
             }
             return col;
         }
-
 
         private void Generate_Click(object sender, RoutedEventArgs e)
         {
@@ -318,7 +327,6 @@ namespace sudoku
             UpdateTable();
             Status.Text = "已生成数独";
             Solve.Content = "求解与验证";
-
         }
 
         private void DigHole(int blank)
@@ -349,6 +357,7 @@ namespace sudoku
         /**
          * 求解数独
          */
+
         private void SolveSudoku()
         {
             Find(0, 0);
@@ -396,25 +405,24 @@ namespace sudoku
                                         sudoku[i, j] = result[k].ToString();
                                         Find(i, j);
 
-
                                         if (sudoku[8, 8].Trim() == "")
                                             sudoku[i, j] = " ";
                                         else
                                             return;
-
                                     }
                                     return;
                                 }
                         }
                     }
                 }
-                return;
             }
+            return;
         }
 
         /**
          * 返回可使用的数字
          */
+
         private int[] GetPossibleNumber(string[] row, string[] col, string[] box)
         {
             int[] arr = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -445,6 +453,7 @@ namespace sudoku
         /**
          * 生成随机数组
          */
+
         private string[] GetRandomArray()
         {
             Random r = new Random();
