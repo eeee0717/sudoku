@@ -140,7 +140,7 @@ namespace sudoku
                 UpdateTable();
                 if (IsFull())
                 {
-                    if (IsCorrect())
+                    if (IsReasonable())
                     {
                         Solve.Content = "重置数独";
                         Status.Text = "Congratulations!";
@@ -150,6 +150,8 @@ namespace sudoku
                     {
                         Solve.Content = "求解与验证";
                         Status.Text = "数独解得不对哦";
+                        MessageBox.Show("这个数独可能不合理，因为某一行、列或者九宫格中存在重复的数字。", "Tips", MessageBoxButton.OK, MessageBoxImage.Warning);
+
                     }
                 }
             }
@@ -456,7 +458,11 @@ namespace sudoku
 
         private void Solve_Click(object sender, RoutedEventArgs e)
         {
-            if (!IsFull())
+            if (!IsReasonable())
+            {
+                MessageBox.Show("这个数独可能不合理，因为某一行、列或者九宫格中存在重复的数字。", "Tips", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else if (!IsFull())
             {
                 Array.Copy(sudoku, history, sudoku.Length);
 
@@ -488,6 +494,70 @@ namespace sudoku
                 Status.Text = "准备就绪";
                 Solve.Content = "求解与验证";
             }
+        }
+        private bool IsReasonable()
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                HashSet<int> test = new HashSet<int>();
+                string[] row = GetRow(i);
+                int count = 0;
+                for (int j = 0; j < 9; j++)
+                {
+                    if (row[j].Trim() != "")
+                    {
+                        test.Add(Int32.Parse(row[j]));
+                        count++;
+                    }
+                }
+                if (test.Count != count)
+                {
+                    return false;
+                }
+            }
+
+            for (int i = 0; i < 9; i++)
+            {
+                HashSet<int> test = new HashSet<int>();
+                string[] col = GetCol(i);
+                int count = 0;
+                for (int j = 0; j < 9; j++)
+                {
+                    if (col[j].Trim() != "")
+                    {
+                        test.Add(Int32.Parse(col[j]));
+                        count++;
+                    }
+                }
+                if (test.Count != count)
+                {
+                    return false;
+                }
+            }
+
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    HashSet<int> test = new HashSet<int>();
+                    string[] box = GetBox(i, j);
+                    int count = 0;
+                    for (int k = 0; k < 9; k++)
+                    {
+                        if (box[k].Trim() != "")
+                        {
+                            test.Add(Int32.Parse(box[k]));
+                            count++;
+                        }
+                    }
+                    if (test.Count != count)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
     }
 }
